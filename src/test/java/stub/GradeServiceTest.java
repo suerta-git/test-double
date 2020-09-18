@@ -1,7 +1,10 @@
 package stub;
 
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+
+import java.util.Arrays;
 
 public class GradeServiceTest {
     /* 需求描述：
@@ -10,6 +13,10 @@ public class GradeServiceTest {
 
     @Test
     public void shouldReturn90WhenCalculateStudentAverageGradeAndGradeIs80And90And100() {
-        //Assertions.assertEquals(90.0, result);
+        GradeSystem mockGradeSystem = new StubGradeSystem(Arrays.asList(80.0, 90.0, 100.0));
+        GradeService gradeService = new GradeService(mockGradeSystem);
+        final int whatever = 0;
+        double actual = gradeService.calculateAverageGrades(whatever);
+        Assertions.assertEquals(90.0, actual);
     }
 }
